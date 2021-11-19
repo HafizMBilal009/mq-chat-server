@@ -4,8 +4,10 @@ import { createServer } from 'http';
 import mqtt from 'mqtt';
 import messageRoutes from './routes/message.js';
 import cors from 'cors';
+import { config } from 'dotenv';
+config();
 export const mqttServer = mqtt.connect({
-  host: 'localhost',
+  host: process.env.MQTT_SERVER_HOST,
   port: 1883,
 });
 const app = express();
